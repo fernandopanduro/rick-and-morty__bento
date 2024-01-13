@@ -1,6 +1,5 @@
 import React from "react";
 import ItemCharacter from "./itemCharacter";
-import styles from "../css/listCharacters.module.css";
 
 const ListCharacters = ({ characters }) => {
   return (
