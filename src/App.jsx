@@ -30,33 +30,39 @@ function App() {
 
   return (
     <main>
-      <form action="" onSubmit={onSubmit}>
-        <input
-          type="search"
-          value={searchValue}
-          onChange={e => setSearchValue(e.target.value)}
-        />
-        <button>Buscar</button>
-      </form>
-      <h1>Rick and Morty</h1>
-      {data && data.info.prev && (
-        <button
-          onClick={() => {
-            setPage(prev => prev - 1);
-          }}>
-          Pagina Previa
-        </button>
-      )}
-      {data && data.info.next && (
-        <button
-          onClick={() => {
-            setPage(prev => prev + 1);
-          }}>
-          Siguiente Pagina
-        </button>
-      )}
-
+      <header className="container header">
+        <h1 className="header__title">Ponte Rikoso</h1>
+        <form action="" className="search" onSubmit={onSubmit}>
+          <input
+            type="search"
+            className="search__input"
+            value={searchValue}
+            onChange={e => setSearchValue(e.target.value)}
+          />
+          <button className="button">Buscar</button>
+        </form>
+      </header>
       {data && <ListCharacters characters={data.results} />}
+      <div className="container container__buttons">
+        {data && data.info.prev && (
+          <button
+            className="button"
+            onClick={() => {
+              setPage(prev => prev - 1);
+            }}>
+            Pagina Previa
+          </button>
+        )}
+        {data && data.info.next && (
+          <button
+            className="button"
+            onClick={() => {
+              setPage(prev => prev + 1);
+            }}>
+            Siguiente Pagina
+          </button>
+        )}
+      </div>
     </main>
   );
 }
