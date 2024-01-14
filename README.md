@@ -16,7 +16,7 @@ El proyecto Rick y Morty es una aplicación web construida con React y Redux, di
 
 ## Demo
 
-Puedes probar aplicación de Rick y Morty App visitando la página de la aplicación [aquí](https://rick-y-morty-app-img27.netlify.app/).
+Puedes probar aplicación de Rick y Morty App visitando la página de la aplicación [aquí](https://rick-and-morty-nine-inky.vercel.app/).
 
 ## Instalación
 
