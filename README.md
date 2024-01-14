@@ -12,7 +12,7 @@ El proyecto Rick y Morty es una aplicación web construida con React y Redux, di
 
 ## Captura de pantalla
 
-![Screenshot](https://imaginario27.com/wp-content/uploads/2023/10/aplicacion-rick-y-morty-captura-pantalla.jpg)
+![Screenshot](./src/assets/preview.png)
 
 ## Demo
 
@@ -25,13 +25,13 @@ Para configurar el proyecto localmente, siga estos pasos:
 1. Clone el repositorio:
 
    ```bash
-   git clone https://github.com/the-moezzat/rick-and-morty.git
+   git clone https://github.com/fernandopanduro/rick-and-morty__bento.git
    ```
 
 2. Navegue hasta el directorio del proyecto:
 
    ```bash
-   cd rick-and-morty
+   cd rick-and-morty__bento
    ```
 
 3. Instale las dependencias del proyecto:
