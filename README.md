@@ -40,7 +40,7 @@ Para configurar el proyecto localmente, siga estos pasos:
    npm install
    ```
 
-## Usage
+## Uso
 
 Una vez finalizado el proceso de instalación, puede utilizar los siguientes scripts npm para trabajar con el proyecto:
 
