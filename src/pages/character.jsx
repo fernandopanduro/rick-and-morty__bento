@@ -8,23 +8,35 @@ import { Link } from "react-router-dom";
 const Character = () => {
   window.scrollTo(0, 0);
   const { id } = useParams();
-  const [character, setCharacter] = useState({
-    id: 2,
-    name: "Morty Smith",
-    status: "Alive",
-    location: {
-      name: "Citadel of Ricks",
-    },
-    image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-  });
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [character, setCharacter] = useState({});
+
   useEffect(() => {
     fetch(`${BASE_URL}character/${id}`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("Error de red");
+        }
+        return res.json();
+      })
       .then(res => {
         setCharacter(res);
+        setIsLoading(false);
       })
-      .catch(e => console.log(e));
+      .catch(e => {
+        console.error(e);
+        setError("Error al cargar los datos");
+        setIsLoading(false);
+      });
   }, [id]);
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+  if (isLoading) {
+    return <p>Cargando...</p>;
+  }
   return (
     <div className="characterPage">
       <Link to={"/"} className="bentoCharacter__link">

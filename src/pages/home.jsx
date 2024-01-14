@@ -17,27 +17,24 @@ const Home = () => {
       .catch(e => console.log(e));
   }, []);
 
-  const nextPage = () => {
-    window.scrollTo(0, 0);
-    fetch(`${data.info.next}`)
+  const fetchData = (url, callback) => {
+    fetch(url)
       .then(res => res.json())
       .then(res => {
         if (!res.error) {
-          dispatch(setData(res));
+          callback(res);
         }
       })
       .catch(e => console.log(e));
   };
-  const prevPage = () => {
+
+  useEffect(() => {
+    fetchData(`${BASE_URL}character/`, data => dispatch(setData(data)));
+  }, []);
+
+  const handlePage = url => {
     window.scrollTo(0, 0);
-    fetch(`${data.info.prev}`)
-      .then(res => res.json())
-      .then(res => {
-        if (!res.error) {
-          dispatch(setData(res));
-        }
-      })
-      .catch(e => console.log(e));
+    fetchData(url, data => dispatch(setData(data)));
   };
 
   return (
@@ -46,20 +43,12 @@ const Home = () => {
       {data.results && <ListCharacters characters={data.results} />}
       <div className="container container__buttons">
         {data.results && data.info.prev && (
-          <button
-            className="button"
-            onClick={() => {
-              prevPage();
-            }}>
+          <button className="button" onClick={() => handlePage(data.info.prev)}>
             Pagina Previa
           </button>
         )}
         {data.results && data.info.next && (
-          <button
-            className="button"
-            onClick={() => {
-              nextPage();
-            }}>
+          <button className="button" onClick={() => handlePage(data.info.next)}>
             Siguiente Pagina
           </button>
         )}
