@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BASE_URL } from "../constans";
 import { useDispatch } from "react-redux";
 import { setData } from "../store/characters/charactersSlice";
+import Button from "./button";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const Header = () => {
           onChange={e => setSearchValue(e.target.value)}
           placeholder="Rick..."
         />
-        <button className="button">Buscar</button>
+        <Button text={"Buscar"} />
       </form>
     </header>
   );

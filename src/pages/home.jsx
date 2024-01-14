@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setData } from "../store/characters/charactersSlice";
 
 import { BASE_URL } from "../constans";
+import Button from "../components/button";
 const Home = () => {
   const data = useSelector(state => state.characters.data);
   const dispatch = useDispatch();
@@ -43,14 +44,16 @@ const Home = () => {
       {data.results && <ListCharacters characters={data.results} />}
       <div className="container container__buttons">
         {data.results && data.info.prev && (
-          <button className="button" onClick={() => handlePage(data.info.prev)}>
-            Pagina Previa
-          </button>
+          <Button
+            text={"Pagina Previa"}
+            onClick={() => handlePage(data.info.prev)}
+          />
         )}
         {data.results && data.info.next && (
-          <button className="button" onClick={() => handlePage(data.info.next)}>
-            Siguiente Pagina
-          </button>
+          <Button
+            text={"Siguiente Pagina"}
+            onClick={() => handlePage(data.info.next)}
+          />
         )}
       </div>
     </div>
