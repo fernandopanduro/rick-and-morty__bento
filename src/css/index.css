@@ -21,25 +21,66 @@
   scroll-behavior: smooth;
 }
 
-body {
-  background-color: var(--blue);
+.home {
+  z-index: 10;
   padding-top: 15rem;
   padding-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
-  body {
+  .home {
     padding-top: 10rem;
   }
+}
+
+.characterPage {
+  background-color: var(--blue);
+  padding-top: 10rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .characterPage {
+    padding-top: 2rem;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   width: 95%;
   margin: 0 auto;
+}
+
+.bg {
+  z-index: 0;
+  position: fixed;
+  inset: 0;
+  background-image: url("https://i.pinimg.com/originals/fb/9e/9a/fb9e9ac52fed2f9e63efd4ba96589606.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .bg {
+    background-image: url("https://cdn.vox-cdn.com/thumbor/9HfS_-ugBoHDaLskP6ssJ8_nIkY=/0x22:1584x851/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/24415978/rick_and_morty_s4_image.png");
+  }
 }
 
 /* Header */
@@ -50,7 +91,7 @@ li {
   z-index: 100;
   top: 2.5rem;
   left: 50%;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -110,6 +151,8 @@ li {
 }
 
 .container__buttons {
+  margin-top: 2rem;
+  z-index: 5;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -159,12 +202,7 @@ li {
 }
 
 .bentoItem {
-  padding: 0.5rem;
-  display: flex;
-  justify-content: end;
-  align-items: flex-end;
   overflow: hidden;
-  position: relative;
   border-radius: var(--b-radius);
   -webkit-border-radius: var(--b-radius);
   -moz-border-radius: var(--b-radius);
@@ -180,10 +218,14 @@ li {
   }
 }
 
-@media (min-width: 768px) {
-  .bentoItem {
-    padding: 2rem;
-  }
+.bentoItem__link {
+  padding: 2rem;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
 }
 
 .bentoItem img {
@@ -238,7 +280,7 @@ li {
 
 .bentoItem__id,
 .bentoItem__name {
-  font-size: 3rem;
+  font-size: clamp(2rem, 1.4681rem + 1.7021vw, 3rem);
 }
 
 .bentoItem__name {
@@ -386,4 +428,105 @@ li {
   .div20 {
     grid-area: 11 / 3 / 12 / 4;
   }
+}
+
+/* Character Page */
+
+.bentoCharacter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .bentoCharacter {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 180px);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    gap: 1rem;
+  }
+}
+
+.bentoCharacter__link {
+  text-decoration: none;
+  margin: 0 auto;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  width: 90%;
+  max-width: 200px;
+  text-align: center;
+  padding: 2rem;
+  color: white;
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--b-radius);
+  -webkit-border-radius: var(--b-radius);
+  -moz-border-radius: var(--b-radius);
+  -ms-border-radius: var(--b-radius);
+  -o-border-radius: var(--b-radius);
+}
+
+.bentoCharacter__item {
+  backdrop-filter: blur(8px);
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--b-radius);
+  -webkit-border-radius: var(--b-radius);
+  -moz-border-radius: var(--b-radius);
+  -ms-border-radius: var(--b-radius);
+  -o-border-radius: var(--b-radius);
+}
+@media (max-width: 767px) {
+  .bentoCharacter__item {
+    aspect-ratio: 1/1;
+    min-width: 18.75rem;
+    min-height: 18.75rem;
+  }
+}
+.bentoCharacter__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bentoCharacter__status,
+.bentoCharacter__id,
+.bentoCharacter__location,
+.bentoCharacter__name {
+  font-size: clamp(5rem, 3.6702rem + 4.2553vw, 7.5rem);
+  text-align: center;
+}
+
+.bentoCharacter__name {
+  color: var(--mystery);
+}
+
+.bentoCharacter .div1 {
+  grid-area: 1 / 1 / 5 / 4;
+}
+.bentoCharacter .div2 {
+  grid-area: 1 / 4 / 3 / 6;
+}
+.bentoCharacter .div3 {
+  grid-area: 3 / 4 / 5 / 6;
+}
+.bentoCharacter .div4 {
+  grid-area: 5 / 1 / 7 / 3;
+}
+.bentoCharacter .div5 {
+  grid-area: 5 / 3 / 7 / 6;
 }
