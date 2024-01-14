@@ -1,12 +1,13 @@
 import React from "react";
 import Header from "../components/header";
-import { useEffect } from "react";
 import ListCharacters from "../components/listCharacters";
+import Button from "../components/button";
+import styles from "../css/home.module.css";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from "../store/characters/charactersSlice";
-
 import { BASE_URL } from "../constans";
-import Button from "../components/button";
+
 const Home = () => {
   const data = useSelector(state => state.characters.data);
   const dispatch = useDispatch();
@@ -39,10 +40,10 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
+    <div className={styles.home}>
       <Header />
       {data.results && <ListCharacters characters={data.results} />}
-      <div className="container container__buttons">
+      <div className={`container ${styles.container__buttons}`}>
         {data.results && data.info.prev && (
           <Button
             text={"Pagina Previa"}

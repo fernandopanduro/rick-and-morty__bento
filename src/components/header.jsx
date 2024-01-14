@@ -4,6 +4,7 @@ import { BASE_URL } from "../constans";
 import { useDispatch } from "react-redux";
 import { setData } from "../store/characters/charactersSlice";
 import Button from "./button";
+import styles from "../css/header.module.css";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -26,12 +27,12 @@ const Header = () => {
     searchCharacter();
   };
   return (
-    <header className="container header">
-      <h1 className="header__title">Ponte Rikoso</h1>
-      <form action="" className="search" onSubmit={onSubmit}>
+    <header className={`container ${styles.header}`}>
+      <h1 className={styles.header__title}>Ponte Rikoso</h1>
+      <form className={styles.search} onSubmit={onSubmit}>
         <input
           type="search"
-          className="search__input"
+          className={styles.search__input}
           value={searchValue}
           onChange={e => setSearchValue(e.target.value)}
           placeholder="Rick..."

@@ -1,0 +1,19 @@
+.home {
+  z-index: 10;
+  padding-top: 15rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .home {
+    padding-top: 10rem;
+  }
+}
+
+.container__buttons {
+  margin-top: 2rem;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { BASE_URL } from "../constans";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "../css/character.module.css";
 
 const Character = () => {
   window.scrollTo(0, 0);
@@ -38,35 +39,38 @@ const Character = () => {
     return <p>Cargando...</p>;
   }
   return (
-    <div className="characterPage">
-      <Link to={"/"} className="bentoCharacter__link">
+    <div className={styles.characterPage}>
+      <Link to={"/"} className={styles.bentoCharacter__link}>
         Volver
       </Link>
-      <section className="container bentoCharacter">
-        <div className="div1 bentoCharacter__item">
+      <section className={`container ${styles.bentoCharacter}`}>
+        <div className={`${styles.div1} ${styles.bentoCharacter__item}`}>
           <img
             src={character.image}
             alt={character.name}
             title={character.name}
-            className="bentoCharacter__image"
+            className={styles.bentoCharacter__image}
             loading="lazy"
             decoding="async"
           />
         </div>
-        <div className="div2  bentoCharacter__item">
-          <h1 className="bentoCharacter__name">{character.name}</h1>
+        <div className={`${styles.div2} ${styles.bentoCharacter__item}`}>
+          <h1 className={`${styles.bentoCharacter__name}`}>{character.name}</h1>
         </div>
-        <div className="div3 bentoCharacter__item">
+        <div className={`${styles.div3} ${styles.bentoCharacter__item}`}>
           <p
-            className={`bentoCharacter__status bentoItem__status bentoItem__status-${character.status}`}>
+            className={`${styles.bentoCharacter__status} bentoItem__status bentoItem__status-${character.status}`}>
             {character.status}
           </p>
         </div>
-        <div className="div4 bentoCharacter__item">
-          <p className="bentoCharacter__name bentoItem__id">#{character.id}</p>
+        <div className={`${styles.div4} ${styles.bentoCharacter__item}`}>
+          <p
+            className={`${styles.bentoCharacter__name} ${styles.bentoItem__id}`}>
+            #{character.id}
+          </p>
         </div>
-        <div className="div5 bentoCharacter__item">
-          <h2 className="bentoCharacter__location">
+        <div className={`${styles.div5} ${styles.bentoCharacter__item}`}>
+          <h2 className={styles.bentoCharacter__location}>
             {character.location.name}
           </h2>
         </div>
